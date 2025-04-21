@@ -15,7 +15,7 @@ bool ReadNumber(Number& result)
 
 bool RunCalculatorCycle()
 {
-    Number first_number;
+    Number first_number = 0;
      
     if (ReadNumber(first_number)) {
         std::string command;
