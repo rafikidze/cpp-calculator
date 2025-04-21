@@ -19,8 +19,8 @@ bool RunCalculatorCycle()
      
     if (ReadNumber(first_number)) {
         std::string command;
-        Number second_number;
-        Number saving_number;
+        Number second_number = 0;
+        Number saving_number = 0;
         bool was_saving = false;
 
         while (true)
