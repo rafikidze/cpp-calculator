@@ -1,80 +1,47 @@
-#include <iostream>
-#include <string>
+#include "calculator.h"
 #include <cmath>
 
-#include "calculator.h"
-
-bool ReadNumber(Number& result)
-{
-    if (!(std::cin >> result)) {
-        std::cerr << "Error: Numeric operand expected" << std::endl;
-        return false;
-    } 
-    return true;
+void Calculator::Set(Number n) {
+    number_ = n;
 }
 
-bool RunCalculatorCycle()
-{
-    Number first_number = 0;
-     
-    if (ReadNumber(first_number)) {
-        std::string command;
-        Number second_number = 0;
-        Number saving_number = 0;
-        bool was_saving = false;
+Number Calculator::GetNumber() const {
+    return number_;
+}
 
-        while (true)
-        {
-            std::cin >> command;
-            if (command == "+") {
-                if (!ReadNumber(second_number)) break;
-                first_number += second_number;
-            }
-            else if (command == "-") {
-                if (!ReadNumber(second_number)) break;
-                first_number -= second_number;
-            }
-            else if (command == "*") {
-                if (!ReadNumber(second_number)) break;
-                first_number *= second_number;
-            }
-            else if (command == "/") {
-                if (!ReadNumber(second_number)) break;
-                first_number /= second_number;
-            }
-            else if (command == "**") {
-                if (!ReadNumber(second_number)) break;
-                first_number = std::pow(first_number, second_number);
-            }
-            else if (command == ":") {
-                if (!ReadNumber(second_number)) break;
-                first_number = second_number;
-            }
-            else if (command == "c") {
-                first_number = 0;
-            }
-            else if (command == "=") {
-                std::cout << first_number << std::endl;
-            }
-            else if (command == "s") {
-                was_saving = true;
-                saving_number = first_number;
-            }
-            else if (command == "l") {
-                if (!was_saving) {
-                    std::cerr << "Error: Memory is empty" << std::endl;
-                    break;
-                }
-                first_number = saving_number;
-            }
-            else if (command == "q") {
-                return true;
-            }
-            else {
-                std::cerr << "Error: Unknown token " << command << std::endl;
-                break;
-            }
-        }
-    }
-    return false;
+void Calculator::Add(Number n) {
+    number_ += n;
+}
+
+void Calculator::Sub(Number n) {
+    number_ -= n;
+}
+
+void Calculator::Div(Number n) {
+    number_ /= n;
+}
+
+void Calculator::Mul(Number n) {
+    number_ *= n;
+}
+
+void Calculator::Pow(Number n) {
+    number_ = std::pow(number_, n);
+}
+
+void Calculator::Save() {
+    saving_number_ = number_;
+    was_saving_ = true;
+}
+
+void Calculator::Load() {
+    number_ = saving_number_;
+}
+
+bool Calculator::HasMem() const {
+    return was_saving_;
+}
+
+std::string Calculator::GetNumberRepr() const {
+    return std::to_string(number_);
 }
