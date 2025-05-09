@@ -162,12 +162,16 @@ void MainWindow::on_btn_point_clicked()
 
 void MainWindow::on_btn_plus_minus_clicked()
 {
-    if (input_number_.startsWith("-")) {
-        SetText(input_number_.mid(1));
-    }
-    else {
-        SetText(input_number_.prepend("-"));
-    }
+    if (input_number_.isEmpty()) {
+        SetText(QString::number(-active_number_));
+   } else {
+       if (input_number_.startsWith("-")) {
+           input_number_ = input_number_.mid(1);
+       } else {
+           input_number_ = "-" + input_number_;
+       }
+       SetText(input_number_);
+   }
 }
 
 void MainWindow::on_btn_backspace_clicked()
