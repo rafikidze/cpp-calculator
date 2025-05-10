@@ -61,8 +61,8 @@ private:
     Ui::MainWindow* ui;
     Calculator calculator_;
     QString input_number_;
-    double active_number_ = 0;
-    double save_number_ = 0;
+    Number active_number_ = 0;
+    Number save_number_ = 0;
     bool wasSaving_ = false;
     Operation current_operation_ = Operation::NO_OPERATION;
 };
