@@ -1,7 +1,7 @@
 #pragma once
 
 #include "calculator.h"
-
+#include "enums.h"
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -17,14 +17,16 @@ public:
     MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
 
-    enum class Operation {
-        NO_OPERATION,
-        ADDITION,
-        SUBTRACTION,
-        MULTIPLICATION,
-        DIVISION,
-        POWER
-    };
+    void SetDigitKeyCallback(std::function<void(int key)> cb);
+    void SetProcessOperationKeyCallback(std::function<void(Operation key)> cb);
+    void SetProcessControlKeyCallback(std::function<void(ControlKey key)> cb);
+    void SetControllerCallback(std::function<void(ControllerType controller)> cb);
+
+    void SetInputText(const std::string& text);
+    void SetErrorText(const std::string& text);
+    void SetFormulaText(const std::string& text);
+    void SetMemText(const std::string& text);
+    void SetExtraKey(const std::optional<std::string>& key);
 
 private slots:
     void on_btn_equal_clicked();
@@ -38,7 +40,6 @@ private slots:
     void on_btn_num_7_clicked();
     void on_btn_num_8_clicked();
     void on_btn_num_9_clicked();
-    void on_btn_point_clicked();
     void on_btn_plus_minus_clicked();
     void on_btn_backspace_clicked();
     void on_btn_mult_clicked();
@@ -50,19 +51,19 @@ private slots:
     void on_btn_ms_clicked();
     void on_btn_mc_clicked();
     void on_btn_mr_clicked();
+    void on_tb_extra_clicked();
+    void on_cmb_controller_currentTextChanged(const QString &textType);
 
 private:
-    void SetText(const QString& text);
-    void AddText(const QString& suffix);
-    void SetOperation(Operation op);
-    QString OpToString(Operation op) const;
+
 
 private:
     Ui::MainWindow* ui;
-    Calculator calculator_;
     QString input_number_;
-    Number active_number_ = 0;
-    Number save_number_ = 0;
-    bool wasSaving_ = false;
-    Operation current_operation_ = Operation::NO_OPERATION;
+
+    std::function<void(int)> digit_cb_;
+    std::function<void(Operation key)> operation_cb_;
+    std::function<void(ControlKey key)> control_cb_;
+    std::function<void (ControllerType)> controller_cb_;
+
 };
