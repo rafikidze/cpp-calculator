@@ -61,95 +61,141 @@ void MainWindow::SetExtraKey(const std::optional<std::string> &key)
 }
 
 void MainWindow::on_btn_num_0_clicked() {
-    digit_cb_(0);
+    if (digit_cb_) {
+        digit_cb_(0);
+    }
 }
 
 void MainWindow::on_btn_num_1_clicked() {
-    digit_cb_(1);
+    if (digit_cb_) {
+        digit_cb_(1);
+    }
 }
 
 void MainWindow::on_btn_num_2_clicked() {
-    digit_cb_(2);
+    if (digit_cb_) {
+        digit_cb_(2);
+    }
 }
 
 void MainWindow::on_btn_num_3_clicked() {
-    digit_cb_(3);
+    if (digit_cb_) {
+        digit_cb_(3);
+    }
 }
 
 void MainWindow::on_btn_num_4_clicked() {
-    digit_cb_(4);
+    if (digit_cb_) {
+        digit_cb_(4);
+    }
 }
 
 void MainWindow::on_btn_num_5_clicked() {
-    digit_cb_(5);
+    if (digit_cb_) {
+        digit_cb_(5);
+    }
 }
 
 void MainWindow::on_btn_num_6_clicked() {
-    digit_cb_(6);
+    if (digit_cb_) {
+        digit_cb_(6);
+    }
 }
 
 void MainWindow::on_btn_num_7_clicked() {
-    digit_cb_(7);
+    if (digit_cb_) {
+        digit_cb_(7);
+    }
 }
 
 void MainWindow::on_btn_num_8_clicked() {
-    digit_cb_(8);
+    if (digit_cb_) {
+        digit_cb_(8);
+    }
 }
 
 void MainWindow::on_btn_num_9_clicked() {
-    digit_cb_(9);
+    if (digit_cb_) {
+        digit_cb_(9);
+    }
 }
 
 void MainWindow::on_btn_equal_clicked() {
-    control_cb_(ControlKey::EQUALS);
+    if (control_cb_) {
+        control_cb_(ControlKey::EQUALS);
+    }
 }
 
 void MainWindow::on_btn_plus_minus_clicked() {
-    control_cb_(ControlKey::PLUS_MINUS);
+    if (control_cb_) {
+        control_cb_(ControlKey::PLUS_MINUS);
+    }
 }
 
 void MainWindow::on_btn_backspace_clicked() {
-    control_cb_(ControlKey::BACKSPACE);
+    if (control_cb_) {
+        control_cb_(ControlKey::BACKSPACE);
+    }
 }
 
 void MainWindow::on_btn_mult_clicked() {
-    operation_cb_(Operation::MULTIPLICATION);
+    if (operation_cb_) {
+        operation_cb_(Operation::MULTIPLICATION);
+    }
 }
 
 void MainWindow::on_btn_sub_clicked() {
-    operation_cb_(Operation::SUBTRACTION);
+    if (operation_cb_) {
+        operation_cb_(Operation::SUBTRACTION);
+    }
 }
 
 void MainWindow::on_btn_add_clicked() {
-    operation_cb_(Operation::ADDITION);
+    if (operation_cb_) {
+        operation_cb_(Operation::ADDITION);
+    }
 }
 
 void MainWindow::on_btn_pow_clicked() {
-    operation_cb_(Operation::POWER);
+    if (operation_cb_) {
+        operation_cb_(Operation::POWER);
+    }
 }
 
 void MainWindow::on_btn_div_clicked() {
-    operation_cb_(Operation::DIVISION);
+    if (operation_cb_) {
+        operation_cb_(Operation::DIVISION);
+    }
 }
 
 void MainWindow::on_btn_c_clicked() {
-    control_cb_(ControlKey::CLEAR);
+    if (control_cb_) {
+        control_cb_(ControlKey::CLEAR);
+    }
 }
 
 void MainWindow::on_btn_ms_clicked() {
-    control_cb_(ControlKey::MEM_SAVE);
+    if (control_cb_) {
+        control_cb_(ControlKey::MEM_SAVE);
+    }
 }
 
 void MainWindow::on_btn_mc_clicked() {
-    control_cb_(ControlKey::MEM_CLEAR);
+    if (control_cb_) {
+        control_cb_(ControlKey::MEM_CLEAR);
+    }
 }
 
 void MainWindow::on_btn_mr_clicked() {
-    control_cb_(ControlKey::MEM_LOAD);
+    if (control_cb_) {
+        control_cb_(ControlKey::MEM_LOAD);
+    }
 }
 
 void MainWindow::on_tb_extra_clicked() {
-    control_cb_(ControlKey::EXTRA_KEY);
+    if (control_cb_) {
+        control_cb_(ControlKey::EXTRA_KEY);
+    }
 }
 
 void MainWindow::on_cmb_controller_currentTextChanged(const QString &textType)
@@ -177,6 +223,8 @@ void MainWindow::on_cmb_controller_currentTextChanged(const QString &textType)
         type = ControllerType::RATIONAL;
     }
 
-    controller_cb_(type);
+    if (controller_cb_) {
+        controller_cb_(type);
+    }
 }
 

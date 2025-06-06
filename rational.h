@@ -171,25 +171,21 @@ inline bool operator==(const Rational& r1, const Rational& r2) {
 }
 // Бинарные арифметические
 inline Rational operator+(Rational r1, Rational r2) {
-    const auto newNum = r1.GetNumerator() * r2.GetDenominator() + r1.GetDenominator() * r2.GetNumerator();
-    const auto newDev = r1.GetDenominator() * r2.GetDenominator();
-    return Rational(newNum, newDev);
+    r1 += r2;
+    return r1;
 }
 
 inline Rational operator-(Rational r1, Rational r2) {
-    const auto newNum = r1.GetNumerator() * r2.GetDenominator() - r1.GetDenominator() * r2.GetNumerator();
-    const auto newDev = r1.GetDenominator() * r2.GetDenominator();
-    return Rational(newNum, newDev);
+    r1 -= r2;
+    return r1;
 }
 
 inline Rational operator*(Rational r1, Rational r2) {
-    const auto newNum = r1.GetNumerator() * r2.GetNumerator();
-    const auto newDev = r1.GetDenominator() * r2.GetDenominator();
-    return Rational(newNum, newDev);
+    r1 *= r2;
+    return r1;
 }
 
 inline Rational operator/(Rational r1, Rational r2) {
-    const auto newNum = r1.GetNumerator() * r2.GetDenominator();
-    const auto newDev = r1.GetDenominator() * r2.GetNumerator();
-    return Rational(newNum, newDev);
+    r1 /= r2;
+    return r1;
 }
